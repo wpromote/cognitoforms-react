@@ -2,7 +2,8 @@
 
 ---
 
-Easily embed CognitoForms in React
+Easily embed CognitoForms in React.
+This package was forked from [@tylermenezes/cognitorforms-react](https://github.com/tylermenezes/cognitoforms-react)
 
 ## Usage
 
