@@ -34,14 +34,6 @@ const MyComponent = () => {
 export default MyComponent;
 ```
 
-## Install
-
----
-
-```bash
-npm install --save https://github.com/wpromote/cognitoforms-react
-```
-
 ## License
 
 ---
