@@ -1,23 +1,5 @@
-const React = require('react');
-const { useState, useEffect, useRef, useReducer } = require('react');
-const PropTypes = require('prop-types');
-
-/**
- * Gets the appropriate iframe embed URL for the specified CognitoForms version
- *
- * @param {number} version The version number of CognitoForms to use
- * @returns {string} URL to use for iframe embed
- */
-const getFrameUrlFromVersion = (version) => {
-	switch (version) {
-		case 1:
-			return 'https://www.cognitoforms.com/f/%accountId?id=%formId';
-		case 2:
-			return 'https://www.cognitoforms.com/f/%accountId/%formId';
-		default:
-			return 'https://www.cognitoforms.com/f/%accountId?id=%formId';
-	}
-};
+import React, { useState, useEffect, useRef, useReducer } from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Prepares a message for CognitoForms
@@ -43,10 +25,9 @@ const getMessage = (event, data) => JSON.stringify({ event, data });
  * @param {Function=} params.onPageChange     Function to run after the page changes.
  * @returns {React.Component}                 React component.
  */
-const Form = ({
+const CognitoForm = ({
 	accountId,
 	formId,
-	version,
 	css,
 	prefill,
 	loading,
@@ -64,9 +45,7 @@ const Form = ({
 		setHeight(100);
 	}, [accountId, formId]);
 
-	const iframeSrc = getFrameUrlFromVersion(version)
-		.replace('%accountId', accountId)
-		.replace('%formId', formId);
+	const iframeSrc = `https://www.cognitoforms.com/f/${accountId}?id=${formId}`;
 
 	// Event handlers for postMessage
 	const listeners = {
@@ -140,10 +119,9 @@ const Form = ({
 		</>
 	);
 };
-Form.propTypes = {
+CognitoForm.propTypes = {
 	accountId: PropTypes.string.isRequired,
 	formId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-	version: PropTypes.number,
 	css: PropTypes.string,
 	prefill: PropTypes.object,
 	loading: PropTypes.element,
@@ -151,8 +129,7 @@ Form.propTypes = {
 	onSubmit: PropTypes.func,
 	onPageChange: PropTypes.func,
 };
-Form.defaultProps = {
-	version: 1,
+CognitoForm.defaultProps = {
 	css: null,
 	prefill: null,
 	loading: null,
@@ -161,4 +138,4 @@ Form.defaultProps = {
 	onPageChange: () => {},
 };
 
-module.exports = Form;
+export default CognitoForm;
