@@ -2,5 +2,3 @@
 
 main:
 	@npm run build
-publish:
-	@yarn run build && npm publish
