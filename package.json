@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "prepare": "npm run build",
     "build": "babel src -d dist --ignore __tests__"
   },
   "devDependencies": {
