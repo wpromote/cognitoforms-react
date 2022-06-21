@@ -2,6 +2,9 @@
 
 ---
 
+# NO LONGER IN USE
+We are now using the original package linked just below.
+
 Easily embed CognitoForms in React.
 This package was forked from [@tylermenezes/cognitorforms-react](https://github.com/tylermenezes/cognitoforms-react)
 
